@@ -9,6 +9,6 @@ class Rook < Piece
 	end
 	
 	def move_dirs
-		rook_moves = horizontal_dirs
+		horizontal_dirs
 	end
 end

@@ -12,8 +12,12 @@ class Board
 
 		board.each_with_index do |subArr, i|
 			(0...board.length).each do |j|
-				if i == 0 || i == 1 || i == 6 || i == 7
+				if i == 0 
+					board[i][0], board[i][7] = Rook.new(self,[i,0]), Rook.new(self,[i,7]) 
+				elsif i == 1 || i == 6 
 					board[i].fill(Piece.new(self, [i, j]))
+				elsif i == 7
+					board[i][0], board[i][7] = Rook.new(self,[i,0]), Rook.new(self,[i,7])
 				end
 			end
 		end
@@ -21,9 +25,10 @@ class Board
 	end
 
 	def [](pos)
-		row = pos[0]
-		column = pos[1]
-		rows[row][column]
+		row, col = pos
+		#row = pos[0]
+		#column = pos[1]
+		rows[row][col]
 	end
 
 	def []=(pos, value)
