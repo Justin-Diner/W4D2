@@ -1,4 +1,4 @@
-require_relative 'piece.rb'
+require_relative 'pieces/pieces.rb'
 
 class Board 
 	attr_reader :rows
@@ -10,9 +10,11 @@ class Board
 	def fill_rows
 		board = Array.new(8) {Array.new(8)}
 
-		board.each_with_index do |subArr, idx|
-			if idx == 0 || idx == 1 || idx == 6 || idx == 7
-				board[idx].fill(Piece.new)
+		board.each_with_index do |subArr, i|
+			(0...board.length).each do |j|
+				if i == 0 || i == 1 || i == 6 || i == 7
+					board[i].fill(Piece.new(self, [i, j]))
+				end
 			end
 		end
 		board
